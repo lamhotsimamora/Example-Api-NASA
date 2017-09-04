@@ -37,7 +37,7 @@ function getArticle()
 					if (res===false)
 					{
 						alert("Uppzz ! Sorry Something is wrong ! Response From Server 404 !");
-						_refresh("");
+						_refresh(_myUrl());
 						return;
 					}
 
