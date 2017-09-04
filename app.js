@@ -13,7 +13,7 @@ function getArticle()
 		if (count==0)
 		{
 			_focus("txt_input");
-			_printTo("display_error",'<article class="message is-small is-danger"> <div class="message-header"> <p><strong>Uppzz </strong>! <a></a></p> <button class="delete" aria-label="delete"></button> </div> <div class="message-body"> The value should be greater than zero (0) ! </div> </article>');
+			_printTo("display_error",'<article class="message is-small is-danger"> <div class="message-header"> <p><strong>Uppzz </strong>! <a></a></p> <button class="delete" aria-label="delete"></button> </div> <div class="message-body"> The value cant empty or should be greater than zero (0) ! </div> </article>');
 			return;
 		}
 
