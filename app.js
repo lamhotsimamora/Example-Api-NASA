@@ -36,7 +36,8 @@ function getArticle()
 				    // check if response is 404
 					if (res===false)
 					{
-						alert("Uppzz ! Sorry Something is wrong ! 404");
+						alert("Uppzz ! Sorry Something is wrong ! Response From Server 404 !");
+						_refresh("");
 						return;
 					}
 
