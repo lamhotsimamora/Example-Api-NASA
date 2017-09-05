@@ -1,11 +1,12 @@
-/**
- * Api Key For Access HTTPS NASA
- * @type {String}
- */
-const api_key = "pXLCGER04yZYFN2PkmkMbEGqF9pbHdlCLP7E4WDl";
+$(document).ready(function(){
+	/**
+	 * Api Key For Access HTTPS NASA
+	 * @type {String}
+	 */
+	const api_key = "pXLCGER04yZYFN2PkmkMbEGqF9pbHdlCLP7E4WDl";
 
-function getArticle()
-{
+	function getArticle()
+	{
 		// Get user count from input value
 		var count = _getValById("txt_input");
 
@@ -109,26 +110,28 @@ function getArticle()
 			 _printTo("display_error",'<article class="message is-small is-danger"> <div class="message-header"> <p><strong>Uppzz </strong>! <a></a></p> <button class="delete" aria-label="delete"></button> </div> <div class="message-body"> You have to type the count of article ! </div> </article>');
 			 _focus("txt_input");
 		}
-}
+	}
 
-_onClick("btn_search",function(){
-	getArticle();
+	_onClick("btn_search",function(){
+		getArticle();
+	});
+
+	function _image(u)
+	{
+		return '<center><img src="'+u+'" width="300" height="300" class="image is-thumbnail"></center>';
+	}
+
+	function _article(t,b)
+	{
+		return '<article class="message is-primary"><div class="message-header"> <p>'+t+'</p> <button class="delete" aria-label="delete"></button></div> <div class="message-body"> '+b+'</div> </article>'; 
+	}
+
+	_focus("txt_input");
+	_setValue("txt_input",5);
+
+
+	_keyCustom(function(){
+		getArticle();
+	},_keyCode.enter);
+
 });
-
-function _image(u)
-{
-	return '<center><img src="'+u+'" width="300" height="300" class="image is-thumbnail"></center>';
-}
-
-function _article(t,b)
-{
-	return '<article class="message is-primary"><div class="message-header"> <p>'+t+'</p> <button class="delete" aria-label="delete"></button></div> <div class="message-body"> '+b+'</div> </article>'; 
-}
-
-_focus("txt_input");
-_setValue("txt_input",5);
-
-
-_keyCustom(function(){
-	getArticle();
-},_keyCode.enter);
