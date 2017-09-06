@@ -68,7 +68,7 @@ $(document).ready(function(){
 						var template = "";
 
 						var k = 1;
-						// Here we start college the object JSON to template
+						// Here we start collage the object JSON to template
 						for (var i = 0 ; i < obj.length ; ++i)
 						{
 							img 		= obj[i].url ? obj[i].url : "img-not-found.jpg";
