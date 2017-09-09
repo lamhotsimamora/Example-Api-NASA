@@ -23,7 +23,7 @@ $(document).ready(function(){
 		{
 			count_article = parseInt(count_article);
 			// defined URL and API Key  and count of article
-			let u = "https://api.nasa.gov/planetary/apod?api_key=pXLCGER04yZYFN2PkmkMbEGqF9pbHdlCLP7E4WDl&count="+count_article;
+			var url = "https://api.nasa.gov/planetary/apod?api_key=pXLCGER04yZYFN2PkmkMbEGqF9pbHdlCLP7E4WDl&count=5";
 			// Create Animation Loading
 			_animation("display_result"," Wait ...");
 			// Disabled Button
@@ -33,7 +33,7 @@ $(document).ready(function(){
 			_printTo("btn_search","Loading...");
 
 			// Start AJAX with GET
-			_requestGET(u,function(res)
+			_requestGET(url,function(res)
 			{
 				    // check if response is 404
 					if (res===false)
