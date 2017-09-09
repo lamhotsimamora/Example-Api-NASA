@@ -8,10 +8,10 @@ $(document).ready(function(){
 	function getArticle()
 	{
 		// Get user count from input value
-		var count = _getValById("txt_input");
+		var count_article = _getValById("txt_input");
 
 		// check if Count equals zero then return;
-		if (count==0)
+		if (count_article==0)
 		{
 			_focus("txt_input");
 			_printTo("display_error",'<article class="message is-small is-danger"> <div class="message-header"> <p><strong>Uppzz </strong>! <a></a></p> <button class="delete" aria-label="delete"></button> </div> <div class="message-body"> The value cant empty or should be greater than zero (0) ! </div> </article>');
@@ -19,10 +19,10 @@ $(document).ready(function(){
 		}
 
 		// check if TRUE
-		if (count)
+		if (count_article)
 		{
 			// defined URL and API Key  and count of article
-			let u = 'https://api.nasa.gov/planetary/apod?api_key='+api_key+"&count="+(count)+"";
+			let u = 'https://api.nasa.gov/planetary/apod?api_key='+api_key+"&count="+count_article+"";
 			// Create Animation Loading
 			_animation("display_result"," Wait ...");
 			// Disabled Button
