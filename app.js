@@ -22,7 +22,7 @@ $(document).ready(function(){
 		if (count_article)
 		{
 			// defined URL and API Key  and count of article
-			let u = 'https://api.nasa.gov/planetary/apod?api_key='+api_key+"&count="+count_article+"";
+			let u = 'https://api.nasa.gov/planetary/apod?api_key="+api_key+"&count="+count_article+"";
 			// Create Animation Loading
 			_animation("display_result"," Wait ...");
 			// Disabled Button
