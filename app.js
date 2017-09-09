@@ -21,6 +21,7 @@ $(document).ready(function(){
 		// check if TRUE
 		if (count_article)
 		{
+			count_article = parseInt(count_article);
 			// defined URL and API Key  and count of article
 			let u = "https://api.nasa.gov/planetary/apod?api_key="+api_key+"&count="+count_article;
 			// Create Animation Loading
