@@ -65,13 +65,28 @@ $(document).ready(function(){
 						sv  		= obj.service_version ? obj.service_version : "-";
 						copyright   = obj.copyright ? obj.copyright : "-";
 
-						template    =  "No                : 1 </br>"
+						
+
+						if (media_type==='video')
+						{
+							template    =  "No                : 1 </br>"
+									 +"Date  		    : <strong>"+date + "</strong> </br>"
+									 +"Media 			: <strong>"+media_type + "</strong> </br>"
+									 +"Service Version  : <strong>"+sv+"</strong> </br>"
+									 +"Copyright        : <strong>"+copyright+"</strong> </br>"
+									 +"Video 			: <strong>"+_video(img)+"</strong> </br>" 
+									 +"Detail			: <i><p>"+explanation+"</p></i> </br>";
+						}
+						else
+						{
+							template    =  "No                : 1 </br>"
 									 +"Date  		    : <strong>"+date + "</strong> </br>"
 									 +"Media 			: <strong>"+media_type + "</strong> </br>"
 									 +"Service Version  : <strong>"+sv+"</strong> </br>"
 									 +"Copyright        : <strong>"+copyright+"</strong> </br>"
 									 +"Image 			: <strong>"+_image(img)+"</strong> </br>" 
 									 +"Detail			: <i><p>"+explanation+"</p></i> </br>";
+						}
 						
 						result_final = _article(title,template);
 
@@ -101,6 +116,10 @@ $(document).ready(function(){
 	function _image(u)
 	{
 		return '<center><img src="'+u+'" width="300" height="300" class="image is-thumbnail"></center>';
+	}
+	function _video(u)
+	{
+		return '</br><center><iframe width="500" height="500"src="'+u+'"> </iframe></center>'; 
 	}
 
 	function _article(t,b)
