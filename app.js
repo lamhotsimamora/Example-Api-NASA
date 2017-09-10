@@ -7,23 +7,8 @@ $(document).ready(function(){
 
 	function getArticle()
 	{
-		// Get user count from input value
-		var count_article = _getValById("txt_input");
-
-		// check if Count equals zero then return;
-		if (count_article==0)
-		{
-			_focus("txt_input");
-			_printTo("display_error",'<article class="message is-small is-danger"> <div class="message-header"> <p><strong>Uppzz </strong>! <a></a></p> <button class="delete" aria-label="delete"></button> </div> <div class="message-body"> The value cant empty or should be greater than zero (0) ! </div> </article>');
-			return;
-		}
-
-		// check if TRUE
-		if (count_article)
-		{
-			count_article = parseInt(count_article);
-			// defined URL and API Key  and count of article
-			var url = "https://api.nasa.gov/planetary/apod?api_key=pXLCGER04yZYFN2PkmkMbEGqF9pbHdlCLP7E4WDl&count=5";
+			var url = "https://api.nasa.gov/planetary/apod?api_key="+api_key;
+			
 			// Create Animation Loading
 			_animation("display_result"," Wait ...");
 			// Disabled Button
@@ -33,7 +18,7 @@ $(document).ready(function(){
 			_printTo("btn_search","Loading...");
 
 			// Start AJAX with GET
-			_requestGET(url,function(res)
+			_loadDoc(url,function(res)
 			{
 				    // check if response is 404
 					if (res===false)
@@ -55,7 +40,8 @@ $(document).ready(function(){
 
 					// If parse JSON as object is true
 					if (obj)
-					{
+					{	
+						_writeLog(obj.length);
 
 						var img;
 						var date;
@@ -68,29 +54,28 @@ $(document).ready(function(){
 						var result_final = "";
 						var template = "";
 
-						var k = 1;
+						
 						// Here we start collage the object JSON to template
-						for (var i = 0 ; i < obj.length ; ++i)
-						{
-							img 		= obj[i].url ? obj[i].url : "img-not-found.jpg";
-							date 		= obj[i].date ? obj[i].date : "-";
-							explanation = obj[i].explanation ? obj[i].explanation : "-";
-							title 		= obj[i].title ? obj[i].title : "-";
-							media_type 	= obj[i].media_type ? obj[i].media_type : "-";
-							sv  		= obj[i].service_version ? obj[i].service_version : "-";
-							copyright   = obj[i].copyright ? obj[i].copyright : "-";
+						
+						img 		= obj.url ? obj.url : "img-not-found.jpg";
+						date 		= obj.date ? obj.date : "-";
+						explanation = obj.explanation ? obj.explanation : "-";
+						title 		= obj.title ? obj.title : "-";
+						media_type 	= obj.media_type ? obj.media_type : "-";
+						sv  		= obj.service_version ? obj.service_version : "-";
+						copyright   = obj.copyright ? obj.copyright : "-";
 
-							template    =  "No                : "+k+" </br>"
-										 +"Date  		    : <strong>"+date + "</strong> </br>"
-										 +"Media 			: <strong>"+media_type + "</strong> </br>"
-										 +"Service Version  : <strong>"+sv+"</strong> </br>"
-										 +"Copyright        : <strong>"+copyright+"</strong> </br>"
-										 +"Image 			: <strong>"+_image(img)+"</strong> </br>" 
-										 +"Detail			: <i><p>"+explanation+"</p></i> </br>";
-							k++;
-							result_final += _article(title,template);
+						template    =  "No                : 1 </br>"
+									 +"Date  		    : <strong>"+date + "</strong> </br>"
+									 +"Media 			: <strong>"+media_type + "</strong> </br>"
+									 +"Service Version  : <strong>"+sv+"</strong> </br>"
+									 +"Copyright        : <strong>"+copyright+"</strong> </br>"
+									 +"Image 			: <strong>"+_image(img)+"</strong> </br>" 
+									 +"Detail			: <i><p>"+explanation+"</p></i> </br>";
+						
+						result_final = _article(title,template);
 
-						}
+					
 						 var end_result = "<center><button class='button is-default' id='btn_down'>Go Down</button></center></br></br>"
 						 					+result_final;
 						
@@ -105,12 +90,8 @@ $(document).ready(function(){
 						
 					}
 			});
-		}
-		else
-		{
-			 _printTo("display_error",'<article class="message is-small is-danger"> <div class="message-header"> <p><strong>Uppzz </strong>! <a></a></p> <button class="delete" aria-label="delete"></button> </div> <div class="message-body"> You have to type the count of article ! </div> </article>');
-			 _focus("txt_input");
-		}
+		
+		
 	}
 
 	_onClick("btn_search",function(){
