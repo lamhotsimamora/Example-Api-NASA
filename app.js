@@ -1,4 +1,8 @@
 $(document).ready(function(){
+	// Enabled console log Garuda Javascript
+	run_console = true;
+	
+	
 	/**
 	 * Api Key For Access HTTPS NASA
 	 * @type {String}
